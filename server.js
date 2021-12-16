@@ -5,6 +5,7 @@ const app = express();
 const mongoose = require('mongoose');
 // importing todoController
 const todoController = require('./controllers/todoController');
+require('dotenv').config();
 
 app.use(express.json());
 
@@ -17,7 +18,7 @@ app.get('/todo/:todoId',todoController.getTodoById);
 
 app.listen(3000,()=>{
     console.log("The server is running on port 3000");
-    mongoose.connect('mongodb+srv://root:8080@cluster0.bnb2h.mongodb.net/todo_db?retryWrites=true&w=majority')
+    mongoose.connect(process.env.DB_URL)
     .then(function(){
         console.log("Database is connected");
     })
