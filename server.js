@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3000
 app.use(express.json());
 
 app.get('/',(request,response)=>{
-    response.status(200).json({message:"Welcome to ToDo"});
+    response.status(200).json({message:"Welcome to ToDo's API"});
 });
 
 app.post('/todo',todoController.addTodo);
@@ -27,7 +27,7 @@ app.listen(PORT,()=>{
         console.log("Database is connected");
     })
     .catch(function(error){
-        console.log("Database not connect",error.message);
+        console.log(`Database not connect ${error}`,);
     });
 });
 
